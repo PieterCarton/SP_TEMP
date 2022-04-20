@@ -3,3 +3,6 @@
 .settings
 .vagrant
 node_modules
+
+# build files
+build

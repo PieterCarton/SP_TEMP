@@ -1,5 +1,8 @@
 {
   "name": "mirte_sensor_lib",
+  "scripts": {
+    "test": "mocha ../test/**/*.js"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-concat": "~0.1.3",
