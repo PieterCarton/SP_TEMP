@@ -1,5 +1,5 @@
-function isEven (num) {
-  return num % 2 === 0
+function isEven(num) {
+    return num % 2 === 0;
 }
 
-module.exports = isEven
+module.exports = isEven;
