@@ -27,4 +27,4 @@ jobs:
         npm install -g grunt-cli
         cd utils
         npm install
-        grunt
+        grunt build
