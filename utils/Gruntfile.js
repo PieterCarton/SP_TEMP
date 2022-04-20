@@ -1,3 +1,7 @@
+/* TODO: cleanu-up tasks*/
+
+var MIRTE_SENSOR_LIB = 'mirte_sensor_lib';
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -5,7 +9,7 @@ module.exports = function(grunt) {
     concat: {
       build: {
         src  : ['../src/*.js', '../src/**/*.js'],
-        dest : '../build/mypackage.js'
+        dest : '../build/' + MIRTE_SENSOR_LIB + '.js'
       }
     },
     jshint: {
@@ -14,7 +18,7 @@ module.exports = function(grunt) {
       },
       files: [
         'Gruntfile.js',
-        '../build/mypackage.js'
+        '../build/' + MIRTE_SENSOR_LIB + '.js'
       ]
     },
     uglify: {
@@ -22,8 +26,8 @@ module.exports = function(grunt) {
         report: 'min'
       },
       build: {
-        src: '../build/mypackage.js',
-        dest: '../build/mypackage.min.js'
+        src: '../build/' + MIRTE_SENSOR_LIB + '.js',
+        dest: '../build/' + MIRTE_SENSOR_LIB + '.min.js'
       }
     },
     watch: {
