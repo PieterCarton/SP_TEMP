@@ -1,5 +1,6 @@
 /**
  * An example JsDoc comment
+ * (VSCode will autofill most of this for you)
  * @param {Integer} num
  * @returns whether num is even
  */
