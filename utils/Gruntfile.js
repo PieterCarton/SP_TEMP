@@ -21,6 +21,16 @@ module.exports = function(grunt) {
         '../build/' + MIRTE_SENSOR_LIB + '.js'
       ]
     },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          captureFile: '../build/report/mochaTest/results.txt',
+          noFail: false
+        },
+        src: ['../test/**/*.js']
+      }
+    },
     uglify: {
       options: {
         report: 'min'
@@ -79,7 +89,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-jsdoc');
+  /* RUNS MOCHA TESTS */
+  grunt.loadNpmTasks('grunt-mocha-test');
 
+  grunt.registerTask('test', ['mochaTest']);
   grunt.registerTask('dev', ['concat', 'watch']);
   grunt.registerTask('build', ['concat', 'jshint', 'uglify']);
   grunt.registerTask('build_and_watch', ['watch']);
