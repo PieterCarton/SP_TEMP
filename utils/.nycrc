@@ -1,5 +1,0 @@
-{
-    "all": true,
-    "report-dir": "../build/report/nyc",
-    "include": ["../src/**"]
-}

@@ -4,5 +4,8 @@
 .vagrant
 node_modules
 
+# grunt task directories
+.nyc_output
+
 # build files
 build

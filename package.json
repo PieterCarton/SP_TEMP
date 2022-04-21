@@ -1,7 +1,7 @@
 {
   "name": "mirte_sensor_lib",
   "scripts": {
-    "test": "mocha ../test/**/*.js",
+    "test": "mocha test/**/*.js",
     "coverage": "nyc npm run test"
   },
   "devDependencies": {
