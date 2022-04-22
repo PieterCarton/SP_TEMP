@@ -1,11 +1,15 @@
+/* TODO: cleanu-up tasks*/
+
+var MIRTE_SENSOR_LIB = 'mirte_sensor_lib';
+
 module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       build: {
-        src  : ['../src/*.js', '../src/**/*.js'],
-        dest : '../build/mypackage.js'
+        src  : ['src/*.js', 'src/**/*.js'],
+        dest : 'build/' + MIRTE_SENSOR_LIB + '.js'
       }
     },
     jshint: {
@@ -14,16 +18,26 @@ module.exports = function(grunt) {
       },
       files: [
         'Gruntfile.js',
-        '../build/mypackage.js'
+        'build/' + MIRTE_SENSOR_LIB + '.js'
       ]
+    },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+          captureFile: 'build/report/mochaTest/results.txt',
+          noFail: false
+        },
+        src: ['test/**/*.js']
+      }
     },
     uglify: {
       options: {
         report: 'min'
       },
       build: {
-        src: '../build/mypackage.js',
-        dest: '../build/mypackage.min.js'
+        src: 'build/' + MIRTE_SENSOR_LIB + '.js',
+        dest: 'build/' + MIRTE_SENSOR_LIB + '.min.js'
       }
     },
     watch: {
@@ -32,8 +46,8 @@ module.exports = function(grunt) {
           interrupt: true
         },
         files: [
-          '../src/*.js',
-          '../src/**/*.js'
+          'src/*.js',
+          'src/**/*.js'
         ],
         tasks: ['concat']
       },
@@ -44,8 +58,8 @@ module.exports = function(grunt) {
         files: [
           'Gruntfile.js',
           '.jshintrc',
-          '../src/*.js',
-          '../src/**/*.js'
+          'src/*.js',
+          'src/**/*.js'
         ],
         tasks: ['build']
       }
@@ -54,16 +68,16 @@ module.exports = function(grunt) {
       options: {
         force: true
       },
-      doc: ['../doc']
+      doc: ['doc']
     },
     jsdoc: {
       doc: {
         src: [
-          '../src/*.js',
-          '../src/**/*.js'
+          'src/*.js',
+          'src/**/*.js'
         ],
         options: {
-          destination: '../doc'
+          destination: 'doc'
         }
       }
     }
@@ -75,7 +89,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-jsdoc');
+  grunt.loadNpmTasks('grunt-mocha-test');
 
+  grunt.registerTask('test', ['mochaTest']);
   grunt.registerTask('dev', ['concat', 'watch']);
   grunt.registerTask('build', ['concat', 'jshint', 'uglify']);
   grunt.registerTask('build_and_watch', ['watch']);

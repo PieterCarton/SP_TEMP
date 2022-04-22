@@ -1,13 +1,16 @@
-const isEven = require('mirte_sensor_lib.js')
+var assert = require('assert');
+var sensorLib = require('../../src/mirte_sensor_lib.js');
 
-test('2 is even', () => {
-  expect(isEven(2)).toBe(true)
-})
-
-test('1 is odd', () => {
-  expect(isEven(1)).toBe(false)
-})
-
-test('strings are not numbers, and therefore not even', () => {
-  expect(isEven('words')).toBe(false)
-})
+describe("Mirte Sensor Library", function () {
+  describe("#isEven(num)", function () {
+    it('should return true for even numbers', function () {
+      assert.equal(sensorLib.isEven(2), true);
+    });
+    it('should return false for odd numbers', function () {
+      assert.equal(sensorLib.isEven(1), false);
+    });
+    it('should return false for non-numbers', function () {
+      assert.equal(sensorLib.isEven("hello"), false);
+    });
+  });
+});
